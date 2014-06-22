@@ -1,3 +1,21 @@
+### Updated information about the project
+This file takes a matrix and calculates the inverse of the matrix.
+It also stores the inverse in a cache, so the next time the inverse is needed,
+the inverse is taken from the cache.  Note that the inverse will not be caculated
+automatically, you will need to call cacheSolve(textMatrix) to create the inverse, otherwise
+the inverse will be null.
+
+#### invocation:
+testMatrix <- makeCacheMatrix(matrix(c(4, 7, 2, 6), nrow=2, ncol=2))
+cacheSolve(testMatrix)
+
+to update the matrix (and reset the cache)
+testMatrix$set(matrix(c(7, 4, 6, 2), nrow=2, ncol=2))
+cacheSolve(testMatrix)
+
+To get the current inverse, if it has been calculated
+testMatrix$getinverse()
+
 ### Introduction
 
 This second programming assignment will require you to write an R
@@ -103,3 +121,4 @@ In order to complete this assignment, you must do the following:
 ### Grading
 
 This assignment will be graded via peer assessment.
+
