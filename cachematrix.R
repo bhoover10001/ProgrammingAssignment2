@@ -2,14 +2,21 @@
 ## Will determine if the solution has already been created and return
 ## that.  If not, it will put the matrix solve solution into the cache
 
-## checks to see if the matrix is in the cache.  If it isn't, puts 
-## it into the cache and calculates the inverse
+## invocation:
+## testMatrix <- makeCacheMatrix(matrix(c(4, 7, 2, 6), nrow=2, ncol=2))
+## cacheSolve(testMatrix)
+
+## to update the matrix (and reset the cache)
+## testMatrix$set(matrix(c(7, 4, 6, 2), nrow=2, ncol=2))
+
+## Creates a special matrix type that has a getinverse and setinverse function
 
 makeCacheMatrix <- function(x = matrix()) {
   i <- NULL
   set <- function(y) {
+    message("set")
     x <<- y
-    m <<- NULL
+    i <<- NULL
   }
   get <- function() x
   setinverse <- function(inverse) i <<- inverse
@@ -21,7 +28,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Determines if x, which is from makeCacheMatrix already has an inverse.  If so, 
-## returns the cached version. Else calculates it
+## returns the cached version, otherwise, calculates the inverse and puts the inverse into 
+## the cache before returning it
 
 cacheSolve <- function(x, ...) {
   i <- x$getinverse()
