@@ -9,12 +9,15 @@
 ## to update the matrix (and reset the cache)
 ## testMatrix$set(matrix(c(7, 4, 6, 2), nrow=2, ncol=2))
 
-## Creates a special matrix type that has a getinverse and setinverse function
+## Creates a special matrix type that has four functions,
+## get <- returns the original matrix
+## set <- sets the matrix and clears the cached inverse
+## getinverse <- gets the inverse, if it was already calculated.
+## setinverse <- sets the invesee and the cache.
 
 makeCacheMatrix <- function(x = matrix()) {
   i <- NULL
   set <- function(y) {
-    message("set")
     x <<- y
     i <<- NULL
   }
